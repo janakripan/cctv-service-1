@@ -1,12 +1,6 @@
 const ContactHero = () => {
   return (
     <div className="relative w-full h-[55vh] lg:h-[60vh] bg-[#0A111F] overflow-hidden flex items-center justify-center pt-24">
-      {/* Background Image - Black and White */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center grayscale mix-blend-luminosity opacity-40"
-        style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80")' }}
-      >
-      </div>
       
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 mt-8">

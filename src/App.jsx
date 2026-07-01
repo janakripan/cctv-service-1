@@ -1,10 +1,23 @@
-import { BrowserRouter as Router } from 'react-router-dom';
-import AnimatedRoutes from './AnimatedRoutes';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout';
+import Home from './pages/Home';
+import About from './pages/About';
+import Service from './pages/Service';
+import Blog from './pages/Blog';
+import Contact from './pages/Contact';
 
 function App() {
   return (
     <Router>
-      <AnimatedRoutes />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="service" element={<Service />} />
+          <Route path="blog" element={<Blog />} />
+          <Route path="contact" element={<Contact />} />
+        </Route>
+      </Routes>
     </Router>
   );
 }

@@ -60,7 +60,7 @@ const BlogSection = () => {
               <div className="w-full flex flex-col cursor-grab active:cursor-grabbing pb-12 px-4 lg:px-8">
                 
                 {/* Unified Card Container */}
-                <div className="group/card w-full bg-white rounded-xl shadow-2xl overflow-hidden flex flex-col">
+                <div className="w-full bg-white rounded-xl shadow-2xl overflow-hidden flex flex-col">
                   
                   {/* Image Section */}
                   <div className="w-full h-[400px] lg:h-[450px] relative bg-[#0A111F]">
@@ -69,7 +69,7 @@ const BlogSection = () => {
                       <img 
                         src={post.img} 
                         alt={post.title} 
-                        className="w-full h-full object-cover grayscale mix-blend-luminosity opacity-70 group-hover/card:grayscale-0 group-hover/card:mix-blend-normal group-hover/card:opacity-100 transition-all duration-500"
+                        className="w-full h-full object-cover grayscale mix-blend-luminosity opacity-70"
                       />
                     </div>
                   </div>

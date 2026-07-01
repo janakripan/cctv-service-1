@@ -37,7 +37,7 @@ const BlogContent = () => {
           {posts.map((post, idx) => (
             <div key={idx} className="flex flex-col border-b border-gray-200 pb-16 last:border-0">
               <div className="w-full aspect-[16/9] mb-6 overflow-hidden bg-gray-100">
-                <img src={post.img} alt={post.title} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                <img src={post.img} alt={post.title} className="w-full h-full object-cover grayscale hover:grayscale-0 hover:scale-105 transition-all duration-500" />
               </div>
               
               <div className="flex items-center gap-6 text-[10px] font-bold text-gray-400 tracking-widest uppercase mb-4">

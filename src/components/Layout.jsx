@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 import { BsChatTextFill } from 'react-icons/bs';
 import { FaAngleUp } from 'react-icons/fa';
 import Lenis from 'lenis';
@@ -9,6 +10,8 @@ import Topbar from './Topbar';
 import Footer from './Footer';
 
 const Layout = () => {
+  const location = useLocation();
+
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
@@ -34,6 +37,11 @@ const Layout = () => {
     };
   }, []);
 
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -42,9 +50,18 @@ const Layout = () => {
     <div className="min-h-screen bg-white text-gray-800 font-sans relative">
       <Topbar />
       <Navbar />
-      <main className="w-full">
-        <Outlet />
-      </main>
+      <AnimatePresence mode="wait">
+        <motion.main 
+          key={location.pathname}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4 }}
+          className="w-full"
+        >
+          <Outlet />
+        </motion.main>
+      </AnimatePresence>
       <Footer />
 
       {/* Global Floating Chat Widget (Bottom Left) */}

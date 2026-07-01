@@ -1,0 +1,499 @@
+--- MATCH 0 ---
+const BlogSection = () => {
+  const posts = [
+    {
+      date: "JANUARY 7, 2021",
+      img: "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    },
+    {
+      date: "JANUARY 7, 2021",
+      img: "https://images.unsplash.com/photo-1508344928928-7137b29de218?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    }
+  ];
+
+  return (
+    <div className="w-full bg-white py-32 relative">
+      <div className="max-w-[1400px] mx-auto px-4 relative z-10 text-center mb-16">
+        <h4 className="text-primary font-bold tracking-widest uppercase text-sm mb-4">DIRECT FROM THE BLOG</h4>
+        <h2 className="font-heading font-bold text-5xl lg:text-6xl text-navy leading-[1.1]">
+          LATEST NEWS & ARTICLES
+        </h2>
+      </div>
+
+      <div className="max-w-[1400px] mx-auto px-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-0">
+          
+          {/* Main Large Post */}
+          <div className="lg:col-span-2 relative group overflow-hidden bg-navy h-[500px]">
+            <img 
+              src={posts[0].img} 
+              alt="CCTV" 
+              className="w-full h-full object-cover grayscale mix-blend-multiply opacity-80 group-hover:scale-105 transition-transform duration-700"
+            />
+            {/* The right side solid navy block shown in image */}
+            <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-[#080d18]"></div>
+            {/* Blue dot on the boundary */}
+            <div className="absolute right-[33%] top-1/2 w-1.5 h-1.5 bg-primary rounded-full translate-x-1/2"></div>
+            
+            {/* Blue Date Badge */}
+            <div className="absolute bottom-0 left-4 lg:left-12 bg-primary text-white py-3 px-6 font-bold text-xs tracking-widest uppercase">
+              {posts[0].date}
+            </div>
+          </div>
+
+          {/* Secondary Post */}
+          <div className="lg:col-span-1 relative group overflow-hidden bg-gray-200 h-[500px]">
+            <img 
+              src={posts[1].img} 
+              alt="Worker" 
+              className="w-full h-full object-cover grayscale mix-blend-multiply opacity-80 group-hover:scale-105 transition-transform duration-700"
+            />
+            
+            {/* Blue Date Badge */}
+            <div className="absolute bottom-0 left-4 bg-primary text-white py-3 px-6 font-bold text-xs tracking-widest uppercase">
+              {posts[1].date}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default BlogSection;
+
+--- MATCH 3 ---
+          {posts.map((post, index) => (
+            <SwiperSlide key={index}>
+              <div className="w-full flex flex-col">
+
+--- MATCH 5 ---
+      <div className="max-w-screen-xl mx-auto px-4 relative">
+        <Swiper
+          modules={[Navigation, Autoplay]}
+          loop={true}
+          slidesPerView={1}
+          navigation={{
+            prevEl: '.blog-prev',
+            nextEl: '.blog-next',
+          }}
+          autoplay={{ delay: 5000, disableOnInteraction: false }}
+          className="w-full shadow-2xl"
+        >
+          {posts.map((post, index) => (
+            <SwiperSlide key={index}>
+              <div className="w-full max-w-4xl mx-auto flex flex-col shadow-xl my-4 cursor-grab active:cursor-grabbing">
+                
+                {/* Image Section */}
+                <div className="w-full h-[450px] lg:h-[500px] relative bg-[#0A111F]">
+                  {/* Left part image, right part solid navy */}
+                  <div className="absolute left-0 top-0 bottom-0 w-2/3">
+                    <img 
+                      src={post.img} 
+                      alt={post.title} 
+                      className="w-full h-full object-cover grayscale mix-blend-luminosity opacity-70"
+                    />
+                  </div>
+                  {/* Blue dot on the boundary */}
+                  <div className="absolute right-[33%] top-1/3 w-1.5 h-1.5 bg-[#538AE4] rounded-full translate-x-1/2 z-10"></div>
+                  
+                  {/* Blue Date Badge aligned with text below */}
+                  <div className="absolute bottom-0 left-8 lg:left-16 bg-[#538AE4] text-white py-4 px-6 lg:px-8 font-bold text-[10px] tracking-widest uppercase z-10">
+                    {post.date}
+                  </div>
+                </div>
+
+                {/* Content Section */}
+                <div className="w-full bg-white px-8 py-10 lg:px-16 lg:py-12 relative z-20">
+                  
+                  {/* Meta Info */}
+                  <div className="flex flex-wrap items-center gap-6 mb-6">
+                    <div className="flex items-center gap-2 text-gray-400 hover:text-[#538AE4] cursor-pointer transition-colors">
+                      <FaRegUser className="text-xs" />
+                      <span className="text-[10px] font-bold tracking-widest uppercase">{post.author}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-gray-400 hover:text-[#538AE4] cursor-pointer transition-colors">
+                      <FaRegComments className="text-xs" />
+                      <span className="text-[10px] font-bold tracking-widest uppercase">{post.comments}</span>
+                    </div>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="font-heading font-bold text-2xl lg:text-3xl text-[#0A111F] hover:text-[#538AE4] cursor-pointer transition-colors mb-6 uppercase">
+                    {post.title}
+                  </h3>
+
+                  {/* Excerpt */}
+                  <div className="flex items-end gap-2 mb-10">
+                    <p className="text-gray-400 leading-loose text-sm">
+                      {post.excerpt}
+                    </p>
+                    <div className="w-1.5 h-1.5 bg-[#538AE4] rounded-full mb-2 flex-shrink-0"></div>
+                  </div>
+
+                  {/* Bottom Divider and Read More */}
+                  <div className="border-t border-gray-100 pt-8 flex items-center justify-between">
+                    <button className="text-gray-400 hover:text-[#538AE4] font-bold text-[10px] tracking-widest uppercase flex items-center gap-2 transition-colors">
+                      READ MORE <FaAngleRight className="text-sm" />
+                    </button>
+                  </div>
+
+                </div>
+
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        {/* Custom Navigation Controls (Shown on Section Hover) */}
+        <button className="blog-prev absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 lg:-translate-x-full w-14 h-14 bg-white hover:bg-[#538AE4] text-[#538AE4] hover:text-white rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 z-20">
+          <FaChevronLeft className="text-xl -ml-1" />
+        </button>
+        <button className="blog-next absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 lg:translate-x-full w-14 h-14 bg-white hover:bg-[#538AE4] text-[#538AE4] hover:text-white rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 z-20">
+          <FaChevronRight className="text-xl -mr-1" />
+        </button>
+
+      </div>
+
+--- MATCH 8 ---
+    <div className="w-full bg-white py-32 relative group">
+      
+      <div className="max-w-screen-xl mx-auto px-4 relative z-10 text-center mb-16">
+        <h4 className="text-[#538AE4] font-bold tracking-widest uppercase text-xs lg:text-sm mb-4">DIRECT FROM THE BLOG</h4>
+        <h2 className="font-heading font-bold text-4xl lg:text-5xl text-[#0A111F] leading-[1.1]">
+          LATEST NEWS & ARTICLES
+        </h2>
+      </div>
+
+      <div className="max-w-screen-xl mx-auto px-4 relative">
+        <div className="max-w-4xl mx-auto relative w-full group/slider">
+          <Swiper
+            modules={[Navigation, Autoplay]}
+            loop={true}
+            slidesPerView={1}
+            navigation={{
+              prevEl: '.blog-prev',
+              nextEl: '.blog-next',
+            }}
+            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            className="w-full shadow-2xl"
+          >
+            {posts.map((post, index) => (
+              <SwiperSlide key={index}>
+                <div className="w-full flex flex-col shadow-xl cursor-grab active:cursor-grabbing">
+                  
+                  {/* Image Section */}
+                  <div className="w-full h-[450px] lg:h-[500px] relative bg-[#0A111F]">
+                    {/* Left part image, right part solid navy */}
+                    <div className="absolute left-0 top-0 bottom-0 w-2/3">
+                      <img 
+                        src={post.img} 
+                        alt={post.title} 
+                        className="w-full h-full object-cover grayscale mix-blend-luminosity opacity-70"
+                      />
+                    </div>
+                    {/* Blue dot on the boundary */}
+                    <div className="absolute right-[33%] top-1/3 w-1.5 h-1.5 bg-[#538AE4] rounded-full translate-x-1/2 z-10"></div>
+                    
+                    {/* Blue Date Badge aligned with text below */}
+                    <div className="absolute bottom-0 left-8 lg:left-16 bg-[#538AE4] text-white py-4 px-6 lg:px-8 font-bold text-[10px] tracking-widest uppercase z-10">
+                      {post.date}
+                    </div>
+                  </div>
+
+                  {/* Content Section */}
+                  <div className="w-full bg-white px-8 py-10 lg:px-16 lg:py-12 relative z-20">
+                    
+                    {/* Meta Info */}
+                    <div className="flex flex-wrap items-center gap-6 mb-6">
+                      <div className="flex items-center gap-2 text-gray-400 hover:text-[#538AE4] cursor-pointer transition-colors">
+                        <FaRegUser className="text-xs" />
+                        <span className="text-[10px] font-bold tracking-widest uppercase">{post.author}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-gray-400 hover:text-[#538AE4] cursor-pointer transition-colors">
+                        <FaRegComments className="text-xs" />
+                        <span className="text-[10px] font-bold tracking-widest uppercase">{post.comments}</span>
+                      </div>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="font-heading font-bold text-2xl lg:text-3xl text-[#0A111F] hover:text-[#538AE4] cursor-pointer transition-colors mb-6 uppercase">
+                      {post.title}
+                    </h3>
+
+                    {/* Excerpt */}
+                    <div className="flex items-end gap-2 mb-10">
+                      <p className="text-gray-400 leading-loose text-sm">
+                        {post.excerpt}
+                      </p>
+                      <div className="w-1.5 h-1.5 bg-[#538AE4] rounded-full mb-2 flex-shrink-0"></div>
+                    </div>
+
+                    {/* Bottom Divider and Read More */}
+                    <div className="border-t border-gray-100 pt-8 flex items-center justify-between">
+                      <button className="text-gray-400 hover:text-[#538AE4] font-bold text-[10px] tracking-widest uppercase flex items-center gap-2 transition-colors">
+                        READ MORE <FaAngleRight className="text-sm" />
+                      </button>
+                    </div>
+
+                  </div>
+
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          {/* Custom Navigation Controls (Shown on Section Hover) */}
+          <button className="blog-prev absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 lg:-translate-x-full w-14 h-14 bg-white hover:bg-[#538AE4] text-[#538AE4] hover:text-white rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 z-20">
+            <FaChevronLeft className="text-xl -ml-1" />
+          </button>
+          <button className="blog-next absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 lg:translate-x-full w-14 h-14 bg-white hover:bg-[#538AE4] text-[#538AE4] hover:text-white rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 z-20">
+            <FaChevronRight className="text-xl -mr-1" />
+          </button>
+        </div>
+      </div>
+    </div>
+
+--- MATCH 11 ---
+                {/* Image Section */}
+                <div className="w-full h-[450px] lg:h-[550px] relative bg-[#0A111F]">
+                  {/* Left part image, right part solid navy */}
+                  <div className="absolute left-0 top-0 bottom-0 w-[60%] lg:w-[65%]">
+                    <img 
+                      src={post.img} 
+                      alt={post.title} 
+                      className="w-full h-full object-cover grayscale mix-blend-luminosity opacity-70"
+                    />
+                  </div>
+                  {/* Blue dot on the boundary */}
+                  <div className="absolute right-[40%] lg:right-[35%] top-1/2 w-1.5 h-1.5 bg-[#538AE4] rounded-full translate-x-1/2 z-10"></div>
+                  
+                  {/* Blue Date Badge */}
+                  {/* Aligned to the bottom left, above the overlapping white box */}
+                  <div className="absolute bottom-[4.5rem] lg:bottom-[5.5rem] left-0 bg-[#538AE4] text-white py-4 px-6 lg:px-8 font-bold text-[10px] tracking-widest uppercase z-10">
+                    {post.date}
+                  </div>
+                </div>
+
+                {/* Content Section (Placed on the image) */}
+                <div className="w-[90%] lg:w-[92%] ml-auto bg-white px-8 py-10 lg:px-16 lg:py-12 relative z-20 -mt-[4.5rem] lg:-mt-[5.5rem] shadow-xl">
+                  
+                  {/* Meta Info */}
+                  <div className="flex flex-wrap items-center gap-6 mb-6">
+                    <div className="flex items-center gap-2 text-gray-400 hover:text-[#538AE4] cursor-pointer transition-colors">
+                      <FaRegUser className="text-xs" />
+                      <span className="text-[10px] font-bold tracking-widest uppercase">{post.author}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-gray-400 hover:text-[#538AE4] cursor-pointer transition-colors">
+                      <FaRegComments className="text-xs" />
+                      <span className="text-[10px] font-bold tracking-widest uppercase">{post.comments}</span>
+                    </div>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="font-heading font-bold text-2xl lg:text-3xl text-[#0A111F] hover:text-[#538AE4] cursor-pointer transition-colors mb-6 uppercase">
+                    {post.title}
+                  </h3>
+
+                  {/* Excerpt */}
+                  <div className="flex items-end gap-2 mb-10">
+                    <p className="text-gray-400 leading-loose text-sm max-w-3xl">
+                      {post.excerpt}
+                    </p>
+                    <div className="w-1.5 h-1.5 bg-[#538AE4] rounded-full mb-2 flex-shrink-0"></div>
+                  </div>
+
+                  {/* Bottom Divider and Read More */}
+                  <div className="border-t border-gray-100 pt-8 flex items-center justify-between">
+                    <button className="text-gray-400 hover:text-[#538AE4] font-bold text-[10px] tracking-widest uppercase flex items-center gap-2 transition-colors">
+                      READ MORE <FaAngleRight className="text-sm" />
+                    </button>
+                  </div>
+
+                </div>
+
+--- MATCH 13 ---
+              <div className="w-full flex flex-col cursor-grab active:cursor-grabbing pb-12">
+                
+                {/* Image Section */}
+                <div className="w-full h-[450px] lg:h-[550px] relative bg-[#0A111F]">
+                  {/* Left part image, right part solid navy */}
+                  <div className="absolute left-0 top-0 bottom-0 w-[60%] lg:w-[65%]">
+                    <img 
+                      src={post.img} 
+                      alt={post.title} 
+                      className="w-full h-full object-cover grayscale mix-blend-luminosity opacity-70"
+                    />
+                  </div>
+                  {/* Blue dot on the boundary */}
+                  <div className="absolute right-[40%] lg:right-[35%] top-1/2 w-1.5 h-1.5 bg-[#538AE4] rounded-full translate-x-1/2 z-10"></div>
+                </div>
+
+                {/* Content Section (Placed centrally on the image) */}
+                <div className="w-[90%] lg:w-[92%] mx-auto bg-white px-8 py-10 lg:px-16 lg:py-12 relative z-20 -mt-[4.5rem] lg:-mt-[5.5rem] shadow-xl">
+                  
+                  {/* Blue Date Badge (Attached to top-left of the white box) */}
+                  <div className="absolute top-0 left-0 -translate-y-full bg-[#538AE4] text-white py-4 px-6 lg:px-8 font-bold text-[10px] tracking-widest uppercase z-10">
+                    {post.date}
+                  </div>
+
+                  {/* Meta Info */}
+                  <div className="flex flex-wrap items-center gap-6 mb-6">
+                    <div className="flex items-center gap-2 cursor-pointer group">
+                      <FaRegUser className="text-[#538AE4] text-sm" />
+                      <span className="text-gray-500 group-hover:text-[#538AE4] text-[10px] font-bold tracking-widest uppercase transition-colors">{post.author}</span>
+                    </div>
+                    <div className="flex items-center gap-2 cursor-pointer group">
+                      <FaRegComments className="text-[#538AE4] text-sm" />
+                      <span className="text-gray-500 group-hover:text-[#538AE4] text-[10px] font-bold tracking-widest uppercase transition-colors">{post.comments}</span>
+                    </div>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="font-heading font-bold text-2xl lg:text-3xl text-[#0A111F] hover:text-[#538AE4] cursor-pointer transition-colors mb-4 uppercase">
+                    {post.title}
+                  </h3>
+
+                  {/* Blue dot underneath title */}
+                  <div className="w-1.5 h-1.5 bg-[#538AE4] rounded-full mb-6 ml-16"></div>
+
+                  {/* Excerpt */}
+                  <p className="text-gray-500 leading-loose text-sm max-w-3xl mb-10">
+                    {post.excerpt}
+                  </p>
+
+                  {/* Bottom Divider and Read More */}
+                  <div className="border-t border-gray-100 pt-8 flex items-center justify-between">
+                    <button className="text-gray-400 hover:text-[#538AE4] font-bold text-[10px] tracking-widest uppercase flex items-center gap-2 transition-colors">
+                      READ MORE <FaAngleRight className="text-sm" />
+                    </button>
+                  </div>
+
+                </div>
+
+              </div>
+
+--- MATCH 15 ---
+                  {/* Image Section */}
+                  <div className="w-full h-[400px] lg:h-[450px] relative bg-[#0A111F]">
+                    {/* Left part image, right part solid navy */}
+                    <div className="absolute left-0 top-0 bottom-0 w-[60%] lg:w-[65%]">
+                      <img 
+                        src={post.img} 
+                        alt={post.title} 
+                        className="w-full h-full object-cover grayscale mix-blend-luminosity opacity-70"
+                      />
+                    </div>
+                    {/* Blue dot on the boundary */}
+                    <div className="absolute right-[40%] lg:right-[35%] top-1/2 w-1.5 h-1.5 bg-[#538AE4] rounded-full translate-x-1/2 z-10"></div>
+                  </div>
+
+                  {/* Content Section */}
+                  <div className="w-full px-8 py-10 lg:px-16 lg:py-12 relative z-20">
+                    
+                    {/* Blue Date Badge (Attached to top-left of the text container, overlapping the image) */}
+                    <div className="absolute -top-[3.5rem] left-0 bg-[#538AE4] text-white py-4 px-6 lg:px-8 font-bold text-[10px] tracking-widest uppercase z-10">
+                      {post.date}
+                    </div>
+
+                    {/* Meta Info */}
+                    <div className="flex flex-wrap items-center gap-6 mb-6">
+                      <div className="flex items-center gap-2 cursor-pointer group">
+                        <FaRegUser className="text-[#538AE4] text-sm" />
+                        <span className="text-gray-500 group-hover:text-[#538AE4] text-[10px] font-bold tracking-widest uppercase transition-colors">{post.author}</span>
+                      </div>
+                      <div className="flex items-center gap-2 cursor-pointer group">
+                        <FaRegComments className="text-[#538AE4] text-sm" />
+                        <span className="text-gray-500 group-hover:text-[#538AE4] text-[10px] font-bold tracking-widest uppercase transition-colors">{post.comments}</span>
+                      </div>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="font-heading font-bold text-2xl lg:text-3xl text-[#0A111F] hover:text-[#538AE4] cursor-pointer transition-colors mb-6 uppercase">
+                      {post.title}
+                    </h3>
+
+                    {/* Excerpt with inline blue dot */}
+                    <p className="text-gray-500 leading-loose text-sm max-w-3xl mb-10">
+                      {post.excerpt.split('. ').map((sentence, i, arr) => (
+                        <span key={i}>
+                          {sentence}{i !== arr.length - 1 ? '.' : ''}
+                          {i === 0 && arr.length > 1 && (
+                            <span className="inline-block w-1.5 h-1.5 bg-[#538AE4] rounded-full mx-2 -translate-y-px"></span>
+                          )}
+                          {i !== arr.length - 1 ? ' ' : ''}
+                        </span>
+                      ))}
+                    </p>
+
+--- MATCH 17 ---
+              <div className="w-full flex flex-col cursor-grab active:cursor-grabbing pb-12">
+                {/* Image Section */}
+                <div className="w-full h-[400px] lg:h-[450px] relative bg-[#0A111F]">
+                  {/* Left part image, right part solid navy */}
+                  <div className="absolute left-0 top-0 bottom-0 w-[60%] lg:w-[65%]">
+                    <img
+                      src={post.img}
+                      alt={post.title}
+                      className="w-full h-full object-cover grayscale mix-blend-luminosity opacity-70"
+                    />
+                  </div>
+                </div>
+
+                {/* Content Section */}
+                <div className="w-full px-8 py-10 lg:px-16 lg:py-12 relative z-20">
+                  {/* Blue Date Badge (Attached to top-left of the text container, overlapping the image) */}
+                  <div className="absolute -top-[3.5rem] left-0 bg-[#538AE4] text-white py-4 px-6 lg:px-8 font-bold text-[10px] tracking-widest uppercase z-10">
+                    {post.date}
+                  </div>
+
+                  {/* Meta Info */}
+                  <div className="flex flex-wrap items-center gap-6 mb-6">
+                    <div className="flex items-center gap-2 cursor-pointer group">
+                      <FaRegUser className="text-[#538AE4] text-sm" />
+                      <span className="text-gray-500 group-hover:text-[#538AE4] text-[10px] font-bold tracking-widest uppercase transition-colors">
+                        {post.author}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2 cursor-pointer group">
+                      <FaRegComments className="text-[#538AE4] text-sm" />
+                      <span className="text-gray-500 group-hover:text-[#538AE4] text-[10px] font-bold tracking-widest uppercase transition-colors">
+                        {post.comments}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="font-heading font-bold text-2xl lg:text-3xl text-[#0A111F] hover:text-[#538AE4] cursor-pointer transition-colors mb-6 uppercase">
+                    {post.title}
+                  </h3>
+
+                  {/* Excerpt */}
+                  <p className="text-gray-500 leading-loose text-sm max-w-3xl mb-10">
+                    {post.excerpt}
+                  </p>
+
+                  {/* Bottom Divider and Read More */}
+                  <button className="text-gray-400 hover:text-[#538AE4] font-bold text-[10px] tracking-widest uppercase flex items-center gap-2 transition-colors">
+                    READ MORE <FaAngleRight className="text-sm" />
+                  </button>
+                </div>
+              </div>
+
+--- MATCH 19 ---
+                {/* Unified Card Container */}
+                <div className="w-full bg-white rounded-xl shadow-2xl overflow-hidden flex flex-col">
+                  
+                  {/* Image Section */}
+                  <div className="w-full h-[400px] lg:h-[450px] relative bg-[#0A111F]">
+                    {/* Left part image, right part solid navy */}
+                    <div className="absolute left-0 top-0 bottom-0 w-[60%] lg:w-[65%]">
+                      <img 
+                        src={post.img} 
+                        alt={post.title} 
+                        className="w-full h-full object-cover grayscale mix-blend-luminosity opacity-70"
+                      />
+                    </div>
+                  </div>
+

@@ -3,11 +3,11 @@ const BlogHero = () => {
     <div className="relative w-full h-[55vh] lg:h-[60vh] bg-[#0A111F] overflow-hidden flex items-center justify-center pt-24">
       {/* Background Image with Blue tint simulation */}
       <div 
-        className="absolute inset-0 bg-cover bg-center grayscale mix-blend-luminosity"
+        className="absolute inset-0 bg-cover bg-center grayscale"
         style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80")' }}
       >
         <div className="absolute inset-0 bg-[#061022]/60 mix-blend-multiply"></div>
-        <div className="absolute inset-0 bg-[#538AE4]/20 mix-blend-multiply"></div>
+        <div className="absolute inset-0 bg-[#538AE4]/30 mix-blend-overlay"></div>
       </div>
       
       {/* Content */}

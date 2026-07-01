@@ -1,11 +1,13 @@
 const ServicesHero = () => {
   return (
     <div className="relative w-full h-[55vh] lg:h-[60vh] bg-[#0A111F] overflow-hidden flex items-center justify-center pt-24">
-      {/* Background Image - Black and White */}
+      {/* Background Image - Bluish Tint */}
       <div 
-        className="absolute inset-0 bg-cover bg-center grayscale mix-blend-luminosity opacity-40"
+        className="absolute inset-0 bg-cover bg-center grayscale"
         style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80")' }}
       >
+        <div className="absolute inset-0 bg-[#061022]/60 mix-blend-multiply"></div>
+        <div className="absolute inset-0 bg-[#538AE4]/30 mix-blend-overlay"></div>
       </div>
       
       {/* Content */}

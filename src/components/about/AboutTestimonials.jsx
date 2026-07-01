@@ -40,13 +40,14 @@ const AboutTestimonials = () => {
           {/* Quote Icon */}
           <div className="flex justify-center mb-8">
             <svg
-              width="40"
-              height="40"
-              viewBox="0 0 24 24"
+              width="44"
+              height="44"
+              viewBox="0 0 40 40"
               fill="#538AE4"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path d="M6 17H3V8H6V17ZM14 17H11V8H14V17ZM6 17L3 22H6L9 17H6ZM14 17L11 22H14L17 17H14Z" />
+              <path d="M8 8 H18 V22 L8 32 Z" />
+              <path d="M22 8 H32 V22 L22 32 Z" />
             </svg>
           </div>
 
@@ -89,7 +90,7 @@ const AboutTestimonials = () => {
       <div className="absolute inset-y-0 left-0 right-0 z-20 pointer-events-none flex items-center justify-between px-4 lg:px-24 max-w-[1600px] mx-auto opacity-0 group-hover/section:opacity-100 transition-opacity duration-300">
         {/* PREV Button */}
         <div className="flex items-center gap-6">
-          <button className="about-testi-prev pointer-events-auto text-gray-300 hover:text-black transition-colors font-bold tracking-widest text-[10px] uppercase">
+          <button className="about-testi-prev w-20 h-20 flex items-center justify-center pointer-events-auto text-gray-300 hover:bg-[#0A111F] hover:text-white transition-colors duration-300 font-bold tracking-widest text-[10px] uppercase">
             PREV
           </button>
           <div className="w-px h-16 bg-gray-300 hidden md:block"></div>
@@ -98,7 +99,7 @@ const AboutTestimonials = () => {
         {/* NEXT Button */}
         <div className="flex items-center gap-6">
           <div className="w-px h-16 bg-gray-300 hidden md:block"></div>
-          <button className="about-testi-next pointer-events-auto text-gray-300 hover:text-black transition-colors font-bold tracking-widest text-[10px] uppercase">
+          <button className="about-testi-next w-20 h-20 flex items-center justify-center pointer-events-auto text-gray-300 hover:bg-[#0A111F] hover:text-white transition-colors duration-300 font-bold tracking-widest text-[10px] uppercase">
             NEXT
           </button>
         </div>

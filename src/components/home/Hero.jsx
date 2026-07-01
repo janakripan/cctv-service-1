@@ -6,14 +6,14 @@ const Hero = () => {
     <div className="relative w-full min-h-screen bg-gray-900 flex items-center">
       {/* Background Image */}
       <div
-        className="absolute inset-0 bg-cover bg-center grayscale mix-blend-luminosity"
+        className="absolute inset-0 bg-cover bg-center grayscale"
         style={{
           backgroundImage:
             'url("https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80")',
         }}
       >
-        {/* Subtle overlay to make text pop, even though reference is just the image */}
-        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="absolute inset-0 bg-[#061022]/60 mix-blend-multiply"></div>
+        <div className="absolute inset-0 bg-[#538AE4]/30 mix-blend-overlay"></div>
       </div>
 
       {/* Floating Chat Icon moved to global layout */}
@@ -22,7 +22,7 @@ const Hero = () => {
       <div className="absolute -bottom-24 right-[28rem] lg:right-[35rem] w-3 h-3 bg-[#538AE4] rounded-full z-20"></div>
 
       {/* Floating Blue Box (Bottom Right overlapping next section) */}
-      <div className="absolute -bottom-[160px] right-12 lg:right-40 z-30 w-[320px] h-[380px] bg-[#538AE4] flex flex-col items-center justify-center text-white p-6 shadow-2xl">
+      <div className="absolute -bottom-[160px] left-1/2 -translate-x-1/2 lg:left-auto lg:translate-x-0 lg:right-40 z-30 w-[90%] max-w-[320px] h-[380px] bg-[#538AE4] flex flex-col items-center justify-center text-white p-6 shadow-2xl">
         <div className="relative w-28 h-28 mb-10">
           <div className="absolute inset-0 border-[3px] border-white rounded-full"></div>
           <div className="absolute inset-2 border-2 border-white/40 rounded-full"></div>
